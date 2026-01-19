@@ -1,0 +1,30 @@
+function checkAccess(loggedIn) {
+    // I would change var to let and not const because they are reassigned
+    let accessLevel;
+    let userRole;
+    if (loggedIn) {
+        // I would change var to let for block scoping
+        let message = "User is logged in.";
+        console.log(message);
+        if (userRole === "admin") {
+            accessLevel = "full";
+        } else {
+            accessLevel = "limited";
+        }
+    } else {
+        // I would change var to let for block scoping
+        let message = "User not logged in.";
+        console.log(message);
+        accessLevel = "none";
+    }
+    return accessLevel;
+}
+
+// I would change var to let for block scoping
+for (let i = 0; i < 3; i++) {
+    console.log("Attempt", i);
+    // I would change var to let for block scoping
+    let loggedIn = Math.random() >= 0.5;
+    checkAccess(loggedIn);
+    console.log("Access Level:", checkAccess(loggedIn));
+}
